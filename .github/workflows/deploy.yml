@@ -34,7 +34,7 @@ jobs:
       - name: Generate
         run: yarn generate
 
-      - name: Deploy
+      - name: Upload
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           local-dir: ./dist/

@@ -53,8 +53,13 @@ export default {
     extractCSS: true,
   },
 
+  router: {
+    trailingSlash: true,
+  },
+
   sitemap: {
     hostname: 'http://kejsrecipes.com/',
     gzip: true,
+    trailingSlash: true,
   },
 };
