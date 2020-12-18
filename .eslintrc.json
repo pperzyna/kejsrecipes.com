@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "globals": {
+    "self": "readonly"
+  },
+
+  "extends": ["plugin:vue/essential", "airbnb-base", "prettier", "plugin:nuxt/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+
+  "plugins": ["vue", "nuxt"],
+  "ignorePatterns": ["/.nuxt", "/dist", "/node_modules", "sw.js"],
+
+  "rules": {
+    "no-shadow": [1, { "builtinGlobals": false, "hoist": "functions", "allow": [] }]
+  }
+}

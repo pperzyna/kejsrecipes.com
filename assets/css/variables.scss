@@ -1,0 +1,14 @@
+// Import Bulma's core
+@import '~bulma/sass/utilities/_all';
+
+$variable-columns: false;
+
+$family-primary: 'Open Sans';
+$family-secondary: 'La Belle Aurore';
+
+$title-family: $family-secondary;
+$title-weight: 400;
+
+$subtitle-family: $family-primary;
+
+$navbar-item-img-max-height: none;
