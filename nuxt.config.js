@@ -2,6 +2,8 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  pageTransition: 'fade',
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: `%s - Kej's recipes`,
@@ -40,5 +42,19 @@ export default {
   axios: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    loaders: {
+      cssModules: {
+        modules: {
+          localIdentName: '[hash:base64:4]',
+        },
+      },
+    },
+    extractCSS: true,
+  },
+
+  sitemap: {
+    hostname: 'http://kejsrecipes.com/',
+    gzip: true,
+  },
 };
