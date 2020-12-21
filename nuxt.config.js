@@ -30,6 +30,10 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: ['@nuxtjs/pwa', '@nuxtjs/axios', '@nuxtjs/robots', '@nuxtjs/sitemap', '@nuxtjs/style-resources'],
 
+  axios: {
+    baseURL: 'https://strapi.kejsrecipes.com/',
+  },
+
   // googleFonts - Configuration (https://github.com/nuxt-community/google-fonts-module)
   googleFonts: {
     families: {

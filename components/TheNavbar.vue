@@ -1,13 +1,13 @@
 <template>
-  <section class="section">
+  <section class="section pb-3 pt-3 pl-2 pr-2">
     <div class="container">
       <BNavbar>
         <template slot="brand">
           <nuxt-link class="navbar-item mb-0" to="/">
             <picture class="image is-64x64">
-              <img src="/icon.png" alt="Kej's recepies logo" />
+              <img src="/icon.png" alt="Kej's recipes logo" />
             </picture>
-            <span class="pt-2 pl-2"> Kej's recepies </span>
+            <span class="pt-2 pl-2"> Kej's recipes </span>
           </nuxt-link>
         </template>
 
@@ -31,3 +31,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.navbar-burger {
+  margin-top: 15px;
+}
+</style>
