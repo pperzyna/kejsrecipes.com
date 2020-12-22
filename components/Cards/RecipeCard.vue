@@ -5,7 +5,7 @@
         <picture class="image">
           <source :srcset="recipe.photos[0].formats.medium.url" type="image/webp" />
           <source :srcset="recipe.photos[0].formats.medium.url" type="image/jpeg" />
-          <img :src="recipe.photos[0].formats.medium.url" :alt="recipe.title" class="is-round" />
+          <img :src="recipe.photos[0].formats.medium.url" :alt="recipe.title" loading="lazy" class="is-round" />
         </picture>
       </nuxt-link>
     </div>

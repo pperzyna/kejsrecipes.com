@@ -7,8 +7,8 @@
         </div>
       </div>
       <h2 class="title is-size-2 has-text-primary">Categories</h2>
-      <div class="columns is-multiline">
-        <div class="column is-2" v-for="category in categories" :key="category.uuid">
+      <div class="columns is-multiline is-mobile">
+        <div class="column is-half-mobile is-2-tablet" v-for="category in categories" :key="category.uuid">
           <CategoryCard :category="category" />
         </div>
       </div>
@@ -29,11 +29,17 @@ export default {
     }
 
     const recipes = await $axios.get('recipes?_limit=10').then((r) => r.data);
-    const categories = await $axios.get('categories?_limit=10').then((r) => r.data);
+    const categories = await $axios.get('categories?_limit=12').then((r) => r.data);
 
     return {
       recipes,
       categories,
+    };
+  },
+  head() {
+    return {
+      titleTemplate: '',
+      title: "Kej's recipes",
     };
   },
 };
