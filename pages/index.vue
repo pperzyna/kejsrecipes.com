@@ -6,7 +6,7 @@
           <RecipeCard :recipe="recipe" />
         </div>
       </div>
-      <h2 class="title is-size-2">Categories</h2>
+      <h2 class="title is-size-2 has-text-primary">Categories</h2>
       <div class="columns is-multiline">
         <div class="column is-2" v-for="category in categories" :key="category.uuid">
           <CategoryCard :category="category" />

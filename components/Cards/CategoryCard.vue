@@ -1,10 +1,12 @@
 <template>
   <div class="box has-text-centered">
-    <picture class="image is-128x128">
-      <img class="is-rounded" src="category.photo.formats.large.url" />
-    </picture>
-    <nuxt-link :to="'/dish/' + category.slug + '/'" rel="dofollow">
-      <h4 class="title is-2 nowrap">{{ category.title }}</h4>
+    <nuxt-link :to="'/tag/' + category.slug + '/'" rel="nofollow" :title="category.title">
+      <picture class="image mb-5">
+        <img class="is-round" :src="category.photo ? category.photo.formats.thumbnail.url : ''" />
+      </picture>
+    </nuxt-link>
+    <nuxt-link :to="'/tag/' + category.slug + '/'" rel="dofollow" :title="category.title">
+      <h4 class="title is-2 has-text-info">{{ category.title }}</h4>
     </nuxt-link>
   </div>
 </template>

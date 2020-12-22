@@ -1,11 +1,11 @@
 <template>
   <div class="card">
     <div class="card-image card-image-rounded">
-      <nuxt-link :to="'/dish/' + recipe.slug + '/'" rel="nofollow">
+      <nuxt-link :to="'/dish/' + recipe.slug + '/'" rel="nofollow" :title="recipe.title">
         <picture class="image">
           <source :srcset="recipe.photos[0].formats.medium.url" type="image/webp" />
           <source :srcset="recipe.photos[0].formats.medium.url" type="image/jpeg" />
-          <img :src="recipe.photos[0].formats.medium.url" :alt="recipe.title" />
+          <img :src="recipe.photos[0].formats.medium.url" :alt="recipe.title" class="is-round" />
         </picture>
       </nuxt-link>
     </div>
@@ -13,7 +13,7 @@
       <p class="has-text-grey has-text-right is-size-7">
         {{ recipe.date }}
       </p>
-      <nuxt-link :to="'/dish/' + recipe.slug + '/'" rel="dofollow">
+      <nuxt-link :to="'/dish/' + recipe.slug + '/'" rel="dofollow" :title="recipe.title">
         <h4 class="title is-2">{{ recipe.title }}</h4>
       </nuxt-link>
       <div class="content"></div>
