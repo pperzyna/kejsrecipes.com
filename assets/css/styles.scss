@@ -5,6 +5,14 @@
   font-family: $family-secondary;
 }
 
+.card-image-rounded img {
+  border-radius: 30px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
 //
 img.is-vcentered {
   vertical-align: middle;

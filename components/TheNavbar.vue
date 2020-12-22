@@ -14,8 +14,8 @@
         <template slot="start"> </template>
 
         <template slot="end">
-          <nuxt-link class="navbar-item" to="/about" title="About"> About </nuxt-link>
-          <nuxt-link class="navbar-item" to="/contact" title="Contact"> Contact </nuxt-link>
+          <!-- <nuxt-link class="navbar-item" to="/about" title="About"> About </nuxt-link>
+          <nuxt-link class="navbar-item" to="/contact" title="Contact"> Contact </nuxt-link> -->
         </template>
       </BNavbar>
     </div>
