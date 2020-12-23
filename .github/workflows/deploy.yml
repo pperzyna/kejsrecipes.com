@@ -1,9 +1,20 @@
 name: Deploy
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+  AWS_CLOUDFRONT: ${{ secrets.AWS_CLOUDFRONT }}
+
+  GH_APP_ENV: production
+  GH_APP_URL: "https://kejsrecipes.com/"
 
 jobs:
   deploy:
@@ -38,11 +49,31 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Upload
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - name: Github Deployment - Start
+        uses: bobheadxi/deployments@master
+        id: deployment
         with:
-          local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_PATH }}
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: ${{ env.GH_APP_ENV }}
+          ref: ${{ github.ref }}
+
+      - name: Upload
+        uses: docker://amazon/aws-cli:2.1.6
+        with:
+          args: s3 sync build s3://${{ env.AWS_BUCKET }} --sse AES256 --follow-symlinks --delete
+
+      - name: Deploy
+        uses: docker://amazon/aws-cli:2.1.6
+        with:
+          args: cloudfront create-invalidation --distribution-id ${{ env.AWS_CLOUDFRONT }} --paths /*
+
+      - name: Github Deployment - Update
+        uses: bobheadxi/deployments@master
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env_url: ${{ env.GH_APP_URL }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
