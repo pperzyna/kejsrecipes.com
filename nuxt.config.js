@@ -29,7 +29,7 @@ export default {
 
   serverMiddleware: [
     redirectSSL.create({
-      exclude: ['localhost'],
+      enabled: process.env.NODE_ENV === 'production',
     }),
   ],
 

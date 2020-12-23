@@ -1,20 +1,30 @@
 <template>
-  <div class="section">
-    <div class="container">
-      <div class="columns is-multiline">
-        <div class="column is-3" v-for="recipe in recipes.slice(0, 4)" :key="recipe.uuid">
-          <RecipeCard :recipe="recipe" />
+  <div>
+    <div class="section">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column is-3" v-for="recipe in recipes.slice(0, 4)" :key="recipe.uuid">
+            <RecipeCard :recipe="recipe" />
+          </div>
         </div>
       </div>
-      <h2 class="title is-size-2 has-text-primary">Categories</h2>
-      <div class="columns is-multiline is-mobile">
-        <div class="column is-half-mobile is-2-tablet" v-for="category in categories" :key="category.uuid">
-          <CategoryCard :category="category" />
+    </div>
+    <div class="section has-background-muted pb-5">
+      <div class="container">
+        <h2 class="title is-size-2 has-text-primary">Categories</h2>
+        <div class="columns is-multiline is-mobile">
+          <div class="column is-half-mobile is-2-tablet" v-for="category in categories" :key="category.uuid">
+            <CategoryCard :category="category" />
+          </div>
         </div>
       </div>
-      <div class="columns is-multiline">
-        <div class="column is-3" v-for="recipe in recipes.slice(4)" :key="recipe.uuid">
-          <RecipeCard :recipe="recipe" />
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column is-3" v-for="recipe in recipes.slice(4)" :key="recipe.uuid">
+            <RecipeCard :recipe="recipe" />
+          </div>
         </div>
       </div>
     </div>
