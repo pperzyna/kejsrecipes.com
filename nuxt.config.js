@@ -1,5 +1,3 @@
-import redirectSSL from 'redirect-ssl';
-
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
