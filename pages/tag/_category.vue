@@ -1,6 +1,9 @@
 <template>
   <div class="section">
     <div class="container">
+      <div class="has-text-centered mb-6">
+        <h1 class="title is-size-1">{{ category.title }}</h1>
+      </div>
       <div class="columns is-multiline">
         <div class="column is-3" v-for="recipe in recipes.slice(0, 4)" :key="recipe.uuid">
           <RecipeCard :recipe="recipe" />
@@ -17,8 +20,8 @@ export default {
       return { recipes: payload.recipes, category: payload.category };
     }
 
-    const category = await $axios.get('category?slug=' + route.params.category).then((r) => r.data[0]);
-    //const recipes = await $axios.get('categories?_limit=10').then((r) => r.data);
+    const category = await $axios.get('categories?slug=' + route.params.category).then((r) => r.data[0]);
+    const recipes = await $axios.get('recipes?categories=' + category.id + '&_limit=10').then((r) => r.data);
 
     return {
       recipes,
@@ -28,8 +31,7 @@ export default {
 
   head() {
     return {
-      titleTemplate: '',
-      title: "Kej's recipes",
+      title: this.category.title,
     };
   },
 };

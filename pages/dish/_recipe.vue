@@ -1,26 +1,37 @@
 <template>
   <div class="section">
     <div class="container">
-      <BCarousel :autoplay="true" with-carousel-list :indicator="false" :overlay="gallery" @click="switchGallery(true)">
-        <BCarouselItem v-for="(item, i) in recipe.photos" :key="i">
-          <figure class="image">
-            <img :src="item.formats.large.url" />
-          </figure>
-        </BCarouselItem>
-        <span v-if="gallery" @click="switchGallery(false)" class="modal-close is-large" />
-        <template slot="list" slot-scope="props">
-          <BCarouselList
-            v-model="props.active"
-            :data="recipe.photos"
-            v-bind="al"
-            @switch="props.switch($event, false)"
-            as-indicator
-          />
-        </template>
-        <template slot="overlay">
-          <div class="has-text-centered has-text-white">Hello i'am overlay!</div>
-        </template>
-      </BCarousel>
+      <div class="has-text-centered mb-6">
+        <h1 class="title is-size-1">{{ recipe.title }}</h1>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="has-text-right has-text-grey is-size-7">
+            {{ recipe.date }}
+          </div>
+          <h3 class="title is-size-3 has-text-grey">Preparation time:</h3>
+          <p class="is-size-5">
+            {{ recipe.preparation }}
+          </p>
+          <h3 class="title is-size-3 has-text-grey mt-6">Secret ingredients:</h3>
+          <p class="is-size-5">
+            {{ recipe.ingredients }}
+          </p>
+          <h3 class="title is-size-3 has-text-grey mt-6">Recipe:</h3>
+          <p class="is-size-5">
+            {{ recipe.body }}
+          </p>
+        </div>
+        <div class="column">
+          <BCarousel :autoplay="true" with-carousel-list :indicator="false" :overlay="gallery" @click="switchGallery(true)">
+            <BCarouselItem v-for="(item, i) in recipe.photos" :key="i">
+              <figure class="image">
+                <img :src="item.formats.large.url" class="is-round" />
+              </figure>
+            </BCarouselItem>
+          </BCarousel>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -66,16 +77,6 @@ export default {
         },
       },
     };
-  },
-  methods: {
-    switchGallery(value) {
-      this.gallery = value;
-      if (value) {
-        document.documentElement.classList.add('is-clipped');
-      } else {
-        document.documentElement.classList.remove('is-clipped');
-      }
-    },
   },
   head() {
     return {
