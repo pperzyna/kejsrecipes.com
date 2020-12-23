@@ -15,11 +15,7 @@
 
 <script>
 export default {
-  async asyncData({ $axios, payload, route }) {
-    // if (payload) {
-    //   return { recipes: payload.recipes, category: payload.category };
-    // }
-
+  async asyncData({ $axios, route }) {
     const category = await $axios.get('categories?slug=' + route.params.category).then((r) => r.data[0]);
     const recipes = await $axios.get('recipes?categories=' + category.id + '&_limit=10').then((r) => r.data);
 

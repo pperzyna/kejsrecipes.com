@@ -33,14 +33,9 @@
 
 <script>
 export default {
-  async asyncData({ $axios, payload }) {
-    // if (payload) {
-    //   return { recipes: payload.recipes, categories: payload.categories };
-    // }
-
+  async asyncData({ $axios }) {
     const recipes = await $axios.get('recipes').then((r) => r.data);
     const categories = await $axios.get('categories?_limit=12').then((r) => r.data);
-
     return {
       recipes,
       categories,

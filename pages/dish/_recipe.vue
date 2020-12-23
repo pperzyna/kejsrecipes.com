@@ -46,13 +46,8 @@ export default {
     BCarouselList,
   },
 
-  async asyncData({ $axios, payload, route }) {
-    // if (payload) {
-    //   return { recipe: payload.recipe, recipes: payload.recipes };
-    // }
-
+  async asyncData({ $axios, route }) {
     const recipe = await $axios.get('recipes?slug=' + route.params.recipe).then((r) => r.data[0]);
-
     return {
       recipe,
       // categories,
