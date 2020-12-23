@@ -61,7 +61,7 @@ jobs:
       - name: Upload
         uses: docker://amazon/aws-cli:2.1.6
         with:
-          args: s3 sync build s3://${{ env.AWS_BUCKET }} --sse AES256 --follow-symlinks --delete
+          args: s3 sync dist s3://${{ env.AWS_BUCKET }} --sse AES256 --follow-symlinks --delete
 
       - name: Deploy
         uses: docker://amazon/aws-cli:2.1.6
