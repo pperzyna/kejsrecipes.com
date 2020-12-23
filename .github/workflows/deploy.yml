@@ -48,32 +48,3 @@ jobs:
         run: yarn generate
         env:
           NODE_ENV: production
-
-      - name: Github Deployment - Start
-        uses: bobheadxi/deployments@master
-        id: deployment
-        with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: ${{ env.GH_APP_ENV }}
-          ref: ${{ github.ref }}
-
-      - name: Upload
-        uses: docker://amazon/aws-cli:2.1.6
-        with:
-          args: s3 sync dist s3://${{ env.AWS_BUCKET }} --sse AES256 --follow-symlinks --delete
-
-      - name: Deploy
-        uses: docker://amazon/aws-cli:2.1.6
-        with:
-          args: cloudfront create-invalidation --distribution-id ${{ env.AWS_CLOUDFRONT }} --paths /*
-
-      - name: Github Deployment - Update
-        uses: bobheadxi/deployments@master
-        if: always()
-        with:
-          step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          env_url: ${{ env.GH_APP_URL }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
