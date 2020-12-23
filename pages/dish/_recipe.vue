@@ -47,12 +47,11 @@ export default {
   },
 
   async asyncData({ $axios, payload, route }) {
-    if (payload) {
-      return { recipe: payload.recipe, recipes: payload.recipes };
-    }
+    // if (payload) {
+    //   return { recipe: payload.recipe, recipes: payload.recipes };
+    // }
 
     const recipe = await $axios.get('recipes?slug=' + route.params.recipe).then((r) => r.data[0]);
-    //const recipes = await $axios.get('categories?_limit=10').then((r) => r.data);
 
     return {
       recipe,
