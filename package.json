@@ -18,7 +18,7 @@
     "buefy": "^0.9.4",
     "bulma": "^0.9.1",
     "core-js": "^3.8.2",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.15.5",
     "nuxt-buefy": "^0.4.4",
     "@nuxtjs/google-fonts": "^1.2.0",
     "@nuxtjs/style-resources": "^1.0.0"
