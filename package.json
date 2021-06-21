@@ -17,7 +17,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "buefy": "^0.9.4",
     "bulma": "^0.9.1",
-    "core-js": "^3.8.2",
+    "core-js": "^3.15.0",
     "nuxt": "^2.14.12",
     "nuxt-buefy": "^0.4.4",
     "@nuxtjs/google-fonts": "^1.2.0",
